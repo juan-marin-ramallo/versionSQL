@@ -15,6 +15,7 @@ CREATE TABLE [dbo].[Answer](
 	[IdQuestionOption] [int] NULL,
 	[ImageUrl] [varchar](5000) NULL,
 	[DoesNotApply] [bit] NULL,
+	[test] [int] NULL,
  CONSTRAINT [PK_Answer] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
