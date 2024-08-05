@@ -1,0 +1,24 @@
+﻿/****** Object:  Table [HangFire].[State]    Committed by VersionSQL https://www.versionsql.com ******/
+
+CREATE TABLE [HangFire].[State](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[JobId] [int] NOT NULL,
+	[Name] [nvarchar](20) NOT NULL,
+	[Reason] [nvarchar](100) NULL,
+	[CreatedAt] [datetime] NOT NULL,
+	[Data] [nvarchar](max) NULL,
+ CONSTRAINT [PK_HangFire_State] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+CREATE NONCLUSTERED INDEX [IX_HangFire_State_JobId] ON [HangFire].[State]
+(
+	[JobId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+ALTER TABLE [HangFire].[State]  WITH CHECK ADD  CONSTRAINT [FK_HangFire_State_Job] FOREIGN KEY([JobId])
+REFERENCES [HangFire].[Job] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+ALTER TABLE [HangFire].[State] CHECK CONSTRAINT [FK_HangFire_State_Job]
